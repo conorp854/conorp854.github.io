@@ -3,3 +3,14 @@
 body, h1{
     font-family: 'Quicksand', sans-serif;
 }
+
+img.diagram {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+     margin-left: 50px;
+     margin-right: 50px;
+}

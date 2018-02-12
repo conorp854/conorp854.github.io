@@ -13,7 +13,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
   	jax: ["input/TeX","output/HTML-CSS"],
-    displayAlign: "left",
+    displayAlign: "center",
     extensions: ["tex2jax.js"],
     jax: ["input/TeX", "output/HTML-CSS"],
     tex2jax: {
@@ -35,11 +35,15 @@
     <h1>Physical-Layer Network Coding</h1>
 
     <p>
-    When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
-    $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+    If we first consider the Two-Way Relay Channel (TWRC) as a foundation for the more involved multi-way relaying situation.
+    We have two users, each able to send 4 distinct signals. One possible realisation of this is Quadrature Phase Shift Keying.
+    We intentionally let the users communicate at the same time, allowing interference. The relay receives a signal of the following form:
     </p>
+
+    <p>$$H_{1}x_{1} + H_{2}x_{2} + n_{R}$$</p>
+
     
-    <img src="Sources/testAnimated.gif" width="250" height="250" align="middle">
+    <img class="diagram" src="Sources/testAnimated.gif" width="250" height="250">
 
 </body>
 
