@@ -19,3 +19,8 @@ p {
   display: flex;
   justify-content: center;
 }
+
+figcaption {
+    margin-top: 20px;
+    text-align: center;
+}
