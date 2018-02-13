@@ -35,6 +35,35 @@
     <h1>Physical-Layer Network Coding</h1>
     
     <p>
+    These are possible signal sets that each user node can use when transmitting. The number of distinct
+    symbols dictates the number of bits that a symbol can represent. Therefore we choose our number of symbols to
+    be powers of 2. PSK is an initialism for Phase Shift Keying. We obtain the next point by maintaining the same 
+    distance from the origin and by increasing the phase.
+    </p>
+    
+    <div class="flex-center">
+        <figure>
+            <img  src="Sources/projects_pnc_4psk.gif" width="250" height="250">
+            <figcaption>QPSK</figcaption>
+            <figcaption>2 bits/symbol</figcaption>
+        </figure>
+        <figure>
+            <img  src="Sources/projects_pnc_8psk.gif" width="250" height="250">
+            <figcaption>8-PSK</figcaption>
+            <figcaption>3 bits/symbol</figcaption>
+        </figure>
+        <figure>
+            <img  src="Sources/projects_pnc_16psk.gif" width="250" height="250">
+            <figcaption>16-PSK</figcaption>
+            <figcaption>4 bits/symbol</figcaption>
+        </figure>
+    </div>
+    
+    <p>
+    The AWGN channel.
+    </p>
+    
+    <p>
     We first consider the  noisy channel for fixed fading conditions.
     </p>
     
@@ -80,8 +109,12 @@
     </p>
     
     <div class="flex-center">
-        <img  src="Sources/projects_pnc_relayConst8.gif" width="250" height="250">
-        <img  src="Sources/projects_pnc_relayConst8_2.gif" width="250" height="250">
+        <figure>
+            <img  src="Sources/projects_pnc_relayConst8.gif" width="250" height="250">
+        </figure>
+        <figure>
+            <img  src="Sources/projects_pnc_relayConst8_2.gif" width="250" height="250">
+        </figure>
     </div>
 </body>
 
