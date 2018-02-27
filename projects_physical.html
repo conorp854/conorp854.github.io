@@ -44,14 +44,15 @@
     </p>
     
     <p>
-    Signal Space Analysis. Allows the underlying waveforms to be abstracted away. Permit a vector representation of the signals.
+    COMING SOON!
+	Signal Space Analysis. Allows the underlying waveforms to be abstracted away. Permit a vector representation of the signals.
     </p>
     
     <p>
-    These are possible signal sets that each user node can use when transmitting. The number of distinct
+    These are some possible signal sets that each user node can use when transmitting. The number of distinct
     symbols dictates the number of bits that a symbol can represent. Therefore we choose our number of symbols to
-    be powers of 2. PSK is an initialism for Phase Shift Keying. We obtain the next point by maintaining the same 
-    distance from the origin and by increasing the phase.
+    be powers of 2. PSK is an initialism for Phase Shift Keying which is one possible modulation scheme. 
+	We obtain the next point by maintaining the same distance from the origin and by increasing the phase.
     </p>
     
     <div class="flex-center">
@@ -73,9 +74,9 @@
     </div>
     
     <p>
-    The AWGN channel. In the presence of Additive White Gaussian Noise our decision rule becomes a maximum likelihood estimation, where 
+    In the presence of Additive White Gaussian Noise (AWGN) our decision rule for incoming symbols becomes a maximum likelihood estimation, where 
     we assume that each symbol from the sender's alphabet has the same a priori probability. This rule is therefore, "Assign $\hat{m} = m_k$ if my received signal
-    is closer to $s_k$ than to any other signal vector".
+    is closer to $s_k$ than to any other signal vector". This boils down to choosing which constellation point am I closest to.
     </p>
     <div class="flex-center">
 		<figure>
@@ -93,7 +94,8 @@
     </div>
     
     <p>
-    We first consider the  noisy channel for fixed fading conditions.
+    Consider the noisy channel for fixed fading conditions. Noise manifests itself as a perturbation to the constellation points. As the
+	signal to noise ratio (SNR) becomes larger there is less perturbation to the incoming symbols.
     </p>
     
     <div class="flex-center">
@@ -118,16 +120,17 @@
     </div>
     
     <p>
-    We first consider the Two-Way Relay Channel (TWRC) as a foundation for the more involved multi-way relaying situation.
     We have two users, each able to send 4 distinct signals. One possible realisation of this is Quadrature Phase Shift Keying.
     We intentionally let the users communicate at the same time, allowing interference. The relay receives a signal of the following form:
     $$H_{1}x_{1} + H_{2}x_{2} + n_{R}$$
+	The coefficients $H_1$ and $H_2$ determine how much the constellation is rotated and contracted. Here we let the values vary and show the
+	resulting constellation.
     </p>
 
     <!--
     TODO:
         - user constellations
-        - what is a constellations
+        - what is a constellation
         - show where the combinations arise
         - explain H coefficients 
         - show formula being used in matlab for constellation
@@ -145,7 +148,7 @@
     
     
     <p>
-    If we now allow each user to send $8$ distinct signals the relay can receive a total of $8^{2}$ or $64$ possible values. This can also be visualised 
+    If we allow each user to send $8$ distinct signals the relay can receive a total of $8^{2}$ or $64$ possible values. This can also be visualised 
     by varying the fading coefficients for each of the two channels.
     </p>
     
