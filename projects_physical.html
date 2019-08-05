@@ -9,168 +9,161 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="stylesheet" type="text/css" href="main.css" />
 
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-  	jax: ["input/TeX","output/HTML-CSS"],
-    displayAlign: "center",
-    extensions: ["tex2jax.js"],
-    jax: ["input/TeX", "output/HTML-CSS"],
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-      processEscapes: true
-    },
-    "HTML-CSS": { availableFonts: ["TeX"] }
-  });
-</script>
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
+<!-- KATEX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+onload="renderMathInElement(document.body);"></script>
   
 </head>
 
 <body>
 
-    <h1>Physical-Layer Network Coding</h1>
+  <div class="content">
+      <h1>Physical-Layer Network Coding</h1>
     
-    <p>
-    Physical-Layer Network Coding (PNC) revolves around the concept of deliberate interference. A group of users communicate via a relay,
-    in the same time slot. This results in the received signal at the relay being a superposition of all signals sent by the users in that 
-    time slot. The two user case has been considered in extensive detail in literature, referred to as the Two Way Relay Channel (TWRC). 
-    Here we consider the TWRC and consider the most promising techniques in the multi-way relaying case where we have more than two users.
-    Throughout we consider perfect synchronisation between user nodes. All other concepts will be introduced as required in the form of 
-    diagrams and animations, with mathematical formulations being provided for further detail.
-    </p>
+      <p>
+      Physical-Layer Network Coding (PNC) revolves around the concept of deliberate interference. A group of users communicate via a relay,
+      in the same time slot. This results in the received signal at the relay being a superposition of all signals sent by the users in that 
+      time slot. The two user case has been considered in extensive detail in literature, referred to as the Two Way Relay Channel (TWRC). 
+      Here we consider the TWRC and consider the most promising techniques in the multi-way relaying case where we have more than two users.
+      Throughout we consider perfect synchronisation between user nodes. All other concepts will be introduced as required in the form of 
+      diagrams and animations, with mathematical formulations being provided for further detail.
+      </p>
+      
+      <p>
+      COMING SOON!
+    Signal Space Analysis. Allows the underlying waveforms to be abstracted away. Permit a vector representation of the signals.
+      </p>
+      
+      <p>
+      These are some possible signal sets that each user node can use when transmitting. The number of distinct
+      symbols dictates the number of bits that a symbol can represent. Therefore we choose our number of symbols to
+      be powers of 2. PSK is an initialism for Phase Shift Keying which is one possible modulation scheme. 
+      We obtain the next point by maintaining the same distance from the origin and by increasing the phase.
+      </p>
+      
+      <div class="flex-center">
+          <figure>
+              <img  src="Sources/projects_pnc_4psk.gif" width="250" height="250">
+              <figcaption>4-PSK</figcaption>
+              <figcaption>2 bits/symbol</figcaption>
+          </figure>
+          <figure>
+              <img  src="Sources/projects_pnc_8psk.gif" width="250" height="250">
+              <figcaption>8-PSK</figcaption>
+              <figcaption>3 bits/symbol</figcaption>
+          </figure>
+          <figure>
+              <img  src="Sources/projects_pnc_16psk.gif" width="250" height="250">
+              <figcaption>16-PSK</figcaption>
+              <figcaption>4 bits/symbol</figcaption>
+          </figure>
+      </div>
+      
+      <p>
+      In the presence of Additive White Gaussian Noise (AWGN) our decision rule for incoming symbols becomes a maximum likelihood estimation, where 
+      we assume that each symbol from the sender's alphabet has the same a priori probability. This rule is therefore, "Assign \(\hat{m} = m_k\) if my received signal
+      is closer to \(s_k\) than to any other signal vector". This boils down to choosing which constellation point am I closest to.
+      </p>
     
-    <p>
-    COMING SOON!
-	Signal Space Analysis. Allows the underlying waveforms to be abstracted away. Permit a vector representation of the signals.
-    </p>
-    
-    <p>
-    These are some possible signal sets that each user node can use when transmitting. The number of distinct
-    symbols dictates the number of bits that a symbol can represent. Therefore we choose our number of symbols to
-    be powers of 2. PSK is an initialism for Phase Shift Keying which is one possible modulation scheme. 
-	We obtain the next point by maintaining the same distance from the origin and by increasing the phase.
-    </p>
-    
+      <div class="flex-center">
+      <figure>
+        <video width=300 autoplay loop>
+          <source src="Sources/projects_pnc_relayML4psk.mp4" type="video/mp4">	
+        </video>
+        <figcaption>4-PSK</figcaption>
+      </figure>
+      <figure>
+        <video width=300 autoplay loop>
+          <source src="Sources/projects_pnc_relayML8psk.mp4" type="video/mp4">	
+        </video>
+        <figcaption>8-PSK</figcaption>
+      </figure>
+      </div>
+      
+      <p>
+      Consider the noisy channel for fixed fading conditions. Noise manifests itself as a perturbation to the constellation points. As the
+    signal to noise ratio (SNR) becomes larger there is less perturbation to the incoming symbols.
+      </p>
+      
+      <div class="flex-center">
+      <figure>
+        <video width=300 autoplay loop>
+          <source src="Sources/projects_pnc_noisy20.mp4" type="video/mp4">	
+        </video>
+        <figcaption>SNR = \(20\)dB</figcaption>
+      </figure>
+      <figure>
+        <video width=300 autoplay loop>
+          <source src="Sources/projects_pnc_noisy10.mp4" type="video/mp4">	
+        </video>
+        <figcaption>SNR = \(10\)dB</figcaption>
+      </figure>
+      <figure>
+        <video width=300 autoplay loop>
+          <source src="Sources/projects_pnc_noisy0.mp4" type="video/mp4">	
+        </video>
+        <figcaption>SNR = \(0\)dB</figcaption>
+      </figure>
+      </div>
+      
+      <p>
+      We have two users, each able to send 4 distinct signals. One possible realisation of this is Quadrature Phase Shift Keying.
+      We intentionally let the users communicate at the same time, allowing interference. The relay receives a signal of the following form:
+      \[H_{1}x_{1} + H_{2}x_{2} + n_{R}\]
+    The coefficients \(H_1\) and \(H_2\) determine how much the constellation is rotated and contracted. Here we let the values vary and show the
+    resulting constellation.
+      </p>
+  
+      <!--
+      TODO:
+          - user constellations
+          - what is a constellation
+          - show where the combinations arise
+          - explain H coefficients 
+          - show formula being used in matlab for constellation
+          - primer on signal space analysis
+          - introduction to noise and dB
+          - diagrams for circularly symmetric distributions
+      - voronoi regions
+      -->
     <div class="flex-center">
-        <figure>
-            <img  src="Sources/projects_pnc_4psk.gif" width="250" height="250">
-            <figcaption>4-PSK</figcaption>
-            <figcaption>2 bits/symbol</figcaption>
-        </figure>
-        <figure>
-            <img  src="Sources/projects_pnc_8psk.gif" width="250" height="250">
-            <figcaption>8-PSK</figcaption>
-            <figcaption>3 bits/symbol</figcaption>
-        </figure>
-        <figure>
-            <img  src="Sources/projects_pnc_16psk.gif" width="250" height="250">
-            <figcaption>16-PSK</figcaption>
-            <figcaption>4 bits/symbol</figcaption>
-        </figure>
-    </div>
+      <figure>
+        <video width=300 autoplay loop>
+          <source src="Sources/projects_pnc_relayConst4.mp4" type="video/mp4">	
+        </video>
+      </figure>
+      </div>
+      
+      
+      <p>
+      If we allow each user to send \(8\) distinct signals the relay can receive a total of \(8^{2}\) or \(64\) possible values. This can also be visualised 
+      by varying the fading coefficients for each of the two channels.
+      </p>
+      
+      <div class="flex-center">
+      <figure>
+        <video width=300 autoplay loop>
+          <source src="Sources/projects_pnc_relayConst8.mp4" type="video/mp4">	
+        </video>
+      </figure>
+      <figure>
+        <video width=300 autoplay loop>
+          <source src="Sources/projects_pnc_relayConst8_2.mp4" type="video/mp4">	
+        </video>
+      </figure>
+      </div>
     
     <p>
-    In the presence of Additive White Gaussian Noise (AWGN) our decision rule for incoming symbols becomes a maximum likelihood estimation, where 
-    we assume that each symbol from the sender's alphabet has the same a priori probability. This rule is therefore, "Assign $\hat{m} = m_k$ if my received signal
-    is closer to $s_k$ than to any other signal vector". This boils down to choosing which constellation point am I closest to.
-    </p>
-	
-    <div class="flex-center">
-		<figure>
-			<video width=300 autoplay loop>
-				<source src="Sources/projects_pnc_relayML4psk.mp4" type="video/mp4">	
-			</video>
-			<figcaption>4-PSK</figcaption>
-		</figure>
-		<figure>
-			<video width=300 autoplay loop>
-				<source src="Sources/projects_pnc_relayML8psk.mp4" type="video/mp4">	
-			</video>
-			<figcaption>8-PSK</figcaption>
-		</figure>
-    </div>
-    
-    <p>
-    Consider the noisy channel for fixed fading conditions. Noise manifests itself as a perturbation to the constellation points. As the
-	signal to noise ratio (SNR) becomes larger there is less perturbation to the incoming symbols.
-    </p>
-    
-    <div class="flex-center">
-		<figure>
-			<video width=300 autoplay loop>
-				<source src="Sources/projects_pnc_noisy20.mp4" type="video/mp4">	
-			</video>
-			<figcaption>SNR = $20$dB</figcaption>
-		</figure>
-		<figure>
-			<video width=300 autoplay loop>
-				<source src="Sources/projects_pnc_noisy10.mp4" type="video/mp4">	
-			</video>
-			<figcaption>SNR = $10$dB</figcaption>
-		</figure>
-		<figure>
-			<video width=300 autoplay loop>
-				<source src="Sources/projects_pnc_noisy0.mp4" type="video/mp4">	
-			</video>
-			<figcaption>SNR = $0$dB</figcaption>
-		</figure>
-    </div>
-    
-    <p>
-    We have two users, each able to send 4 distinct signals. One possible realisation of this is Quadrature Phase Shift Keying.
-    We intentionally let the users communicate at the same time, allowing interference. The relay receives a signal of the following form:
-    $$H_{1}x_{1} + H_{2}x_{2} + n_{R}$$
-	The coefficients $H_1$ and $H_2$ determine how much the constellation is rotated and contracted. Here we let the values vary and show the
-	resulting constellation.
+    COMING SOON! Singular Fade States, Network Coding, Adaptive Network Coding, Multi-Way Relaying
     </p>
 
-    <!--
-    TODO:
-        - user constellations
-        - what is a constellation
-        - show where the combinations arise
-        - explain H coefficients 
-        - show formula being used in matlab for constellation
-        - primer on signal space analysis
-        - introduction to noise and dB
-        - diagrams for circularly symmetric distributions
-		- voronoi regions
-    -->
-	<div class="flex-center">
-		<figure>
-			<video width=300 autoplay loop>
-				<source src="Sources/projects_pnc_relayConst4.mp4" type="video/mp4">	
-			</video>
-		</figure>
-    </div>
-    
-    
-    <p>
-    If we allow each user to send $8$ distinct signals the relay can receive a total of $8^{2}$ or $64$ possible values. This can also be visualised 
-    by varying the fading coefficients for each of the two channels.
-    </p>
-    
-    <div class="flex-center">
-		<figure>
-			<video width=300 autoplay loop>
-				<source src="Sources/projects_pnc_relayConst8.mp4" type="video/mp4">	
-			</video>
-		</figure>
-		<figure>
-			<video width=300 autoplay loop>
-				<source src="Sources/projects_pnc_relayConst8_2.mp4" type="video/mp4">	
-			</video>
-		</figure>
-    </div>
-	
-	<p>
-	COMING SOON! Singular Fade States, Network Coding, Adaptive Network Coding, Multi-Way Relaying
-	</p>
-	
+
+  </div>
+
 </body>
 
 </html>
