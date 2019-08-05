@@ -1,7 +1,20 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap');
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
 
 body, h1{
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.content {
+    max-width: 800px;
+    margin: auto;
 }
 
 img.diagram {
