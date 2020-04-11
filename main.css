@@ -17,15 +17,19 @@ body, h1{
 }
 
 .content {
-    max-width: 50%;
-    margin: auto;
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    padding: 0 10px;
+    font-weight: 300;
 }
 
 img.diagram {
     max-width: 100%;
 }
 
-p {
+p,ul {
      margin-left: 50px;
      margin-right: 50px;
 }
