@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Determinant as an Area</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="/main.css" />
+
+<!-- KATEX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+
+    <div class="content">
+        <h1>Determinant as an Area</h1>
+        
+        <p>
+            Two vectors, dot product, area of an arbitrary parallelogram, sprinkle o algebra, determinant of a 2x2 matrix.
+        </p>
+
+        <!--
+        <p>
+            <canvas id="planets" width = "300" height = "300">
+                Your browser does not support the canvas element.
+            </canvas>
+
+            <script src="js/planets.js"></script>
+        </p>
+        -->
+
+        <div class="flex-center">
+            <figure>
+                <img  src="/Sources/DeterminantArea/angleBetweenVectors_unit.png" width="250" height="250">
+                <figcaption>Our Unit Vectors</figcaption>
+            </figure>
+        </div>
+
+        <p>
+        The \( \hat{\textbf{i}} \) and \( \hat{\textbf{j}} \) unit vectors are mapped to new locations. Where they land make up the columns
+        of the matrix describing that movement. Seeing as \( \hat{\textbf{i}} \) and \( \hat{\textbf{j}} \) form a basis, they span the space
+        and are orthogonal to each other, we can express all vectors in this space as a linear combination of just these 2 vectors.
+
+        \[ \hat{\textbf{i}}  = \begin{pmatrix} 1 \\ 0\end{pmatrix}, \hat{\textbf{j}} = \begin{pmatrix} 0 \\ 1\end{pmatrix} \]
+        </p>
+
+        <p>
+        The matrix that moves these unit vectors to their new locations has columns that are the final x and y coordinates of where they
+        land.
+
+        \[A = \begin{pmatrix} x_1 & x_2 \\ y_1 & y_2 \end{pmatrix}\]
+        </p>
+
+        <p>
+        The determinant is a measure of how the area of each box on the grid changes after we move \( \hat{\textbf{i}} \) and \( \hat{\textbf{j}} \)
+        to their new locations. So in the original case where we start with our unit vectors the area of a grid box can be found by multiplying the 
+        width and height, which here is \(1 \cdot 1 = 1\).
+        </p>
+
+        <p>
+        So now let's map our unit vectors to their new locations! We multiply each unit vector by the matrix \(A\), remembering that each column
+        of \(A\) will be where our \( \hat{\textbf{i}} \) and \( \hat{\textbf{j}} \) unit vectors will land respectively.
+
+        \[A\hat{\textbf{i}} = \begin{pmatrix} x_1 & x_2 \\ y_1 & y_2 \end{pmatrix}\begin{pmatrix}1 \\ 0 \end{pmatrix} = 
+        1\begin{pmatrix}x_1 \\ y_1\end{pmatrix} + 0\begin{pmatrix}x_2 \\ y_2 \end{pmatrix} = \begin{pmatrix}x_1 \\ y_1 \end{pmatrix}\]
+
+        \[A\hat{\textbf{j}} = \begin{pmatrix} x_1 & x_2 \\ y_1 & y_2 \end{pmatrix}\begin{pmatrix}0 \\ 1 \end{pmatrix} = 
+        0\begin{pmatrix}x_1 \\ y_1\end{pmatrix} + 1\begin{pmatrix}x_2 \\ y_2 \end{pmatrix} = \begin{pmatrix}x_2 \\ y_2 \end{pmatrix}\]
+        </p>
+
+        <p>
+        We have our unit vectors mapped to their new locations! So how has the area of the grid changed...? We can find out by considering 
+        the following setup. In general the area of the grid can be found as the area of a parallelogram (the area is also signed in that it
+        can be negative, we'll come back to this later). The new setup is pictured below. 
+
+        <div class="flex-center">
+            <figure>
+                <img  src="/Sources/DeterminantArea/angleBetweenVectors_mapped.png" width="100%">
+                <figcaption>Our Mapped Unit Vectors</figcaption>
+            </figure>
+        </div>
+        </p>
+
+
+        <p>
+        Let's really hammer home what's going on before we go any further. We have done three things here:
+        </p>
+        <ul>
+            <li>We have stretched the length of each of the unit vectors.</li>
+            <li>We have rotated the entire plane, keeping all lines parallel and equally spaced.</li>
+            <li>We did the rotation around the origin so the origin does not move!</li>
+        </ul>
+        <p>    
+        The grid before and after this transformation is shown here:
+        <div class="flex-center">
+            <figure>
+                <img  src="/Sources/DeterminantArea/angleBetweenVectors_grids.png" width="100%">
+                <figcaption>Mapping from original grid</figcaption>
+            </figure>
+        </div>
+        </p>
+
+        <p>
+        Now all we need to find out is how the area of the grid elements has changed. So what we're really saying is 
+        that we want to find the area of the parallelogram given some arbitrary mapping \(A\). Finding the area of a parallelogram
+        is easy once we see it's a rectangle in disguise...
+        <div class="flex-center">
+            <figure>
+                <img  src="/Sources/DeterminantArea/angleBetweenVectors_paraAreaProof.png" width="100%">
+                <figcaption>Area of parallelogram and equivalent rectangle</figcaption>
+            </figure>
+        </div>
+        </p>
+
+        <p>
+        Given this, we need to find the bottom side length and the length of the dashed perpendicular line. The bottom is the distance from
+        the origin to the tip of the \(A\hat{\textbf{i}}\) vector, which is \(\sqrt{x_1^2 + y_1^2}\). The dashed perpendicular line is 
+        \(\sqrt{x_2^2 + y_2^2}\cos{\phi}\)
+        </p>
+
+        <p>
+        We'll also need to find the angle \(\theta\), we'll use the dot product to figure this out. For any two vectors \(\vec{v}\) and \(\vec{w}\)
+        we can compute the dot product by taking the sum of the product of their components or using the following:
+
+        \[ \vec{v} \cdot \vec{w}  = |\vec{v}||\vec{w}|\cos{\theta}\]
+
+        where \(|\vec{v}|\), \(|\vec{w}|\) are the vectors' respective magnitudes (distance from the origin). Let's call the perpendicular distance
+        \(p\). We said earlier that it's \(|A\hat{\textbf{j}}|\cos{\phi}\). Can we relate \(\phi\) and \(\theta\)? Looking closely, we can see 
+        that \(\phi\) is the extension past \(90^\circ\) or \(\frac{\pi}{2} \text{rad}\), so
+        <sup data-comment="should be next to should be next to should be next to should be next to [1]" id ="ref1">[1]</sup>:
+        \[\theta = \frac{\pi}{2} + \phi \text{ or } \phi = \theta - \frac{\pi}{2}\]
+
+        Now it's possible to relate \(p\) to \(\theta\) like so:
+        \[p = |A\hat{\textbf{j}}|\cos{\phi} = |A\hat{\textbf{j}}|\cos{\left(\theta - \frac{\pi}{2}\right)} = |A\hat{\textbf{j}}|\sin{\theta}\]
+        </p>
+
+        <p> 
+        Ok, so where were we, the area of a parallelogram, which is secretly a rectangle. We can write that area now using what we've just found out:
+
+        \[ \begin{aligned}
+        \text{Area} &= p|A\hat{\textbf{i}}| \\
+                    &= |A\hat{\textbf{i}}||A\hat{\textbf{j}}|\sin{\theta}\\
+                    &= \sqrt{x_1^2 + y_1^2}\sqrt{x_2^2 + y_2^2}\sin{\left(\arccos\left[\frac{x_1 x_2 + y_1 y_2}{\sqrt{x_1^2 + y_1^2}\sqrt{x_2^2 + y_2^2}}\right]\right)}
+        \end{aligned}
+        \]
+
+        Well that looks pretty horrible! However, we can make a few observations that will make this collapse down a lot...
+        </p>
+
+        <p>
+        The ratio of the dot product over the product of the magnitudes is constrained between -1 and 1 as it's equal to cos(theta). something 
+        something something
+        </p>
+
+        <!--
+        TODO:
+            explain cos theta form
+            polar
+            sidebar 
+            cos(theta - 90) = sin(theta)
+            cosine even
+            headings
+        -->
+    </div>
+	
+</body>
+
+</html>
