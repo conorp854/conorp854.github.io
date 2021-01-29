@@ -8,21 +8,59 @@ a:hover {
     text-decoration: underline;
 }
 
-html {font-size: 1.375em;  /* 22px */}
+html {font-size: 1em;  /* 16px */}
 
-body, h1{
+body {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 100%;     /* flexible baseline */
     line-height: 1.4;
 }
 
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.toppane {
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+    background-color:  rgb(255, 255, 255)f;
+    font-size: 3em;
+    font-weight: 200;
+    text-align: center;
+    text-transform: uppercase;
+    visibility: hidden;
+}
+
+.leftpane {
+    width: 25%;
+    height:100%;
+    float: left;
+    background-color: rgb(255, 255, 255);
+    border-collapse: collapse;
+    visibility: hidden;
+}
+
+.rightpane {
+    width: 25%;
+    height: 100%;
+    float: right;
+    background-color: rgb(255, 255, 255);
+    border-collapse: collapse;
+    visibility: hidden;
+}
+
 .content {
-    margin: 40px auto;
-    max-width: 650px;
-    line-height: 1.6;
-    font-size: 18px;
-    padding: 0 10px;
-    font-weight: 300;
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.subContent {
+    width: 100%;
+    height: 100%;
+    float: left;
 }
 
 img.diagram {
@@ -34,10 +72,19 @@ p,ul {
      margin-right: 50px;
 }
 
+/*Images*/
+
 .flex-center {
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
+
+.flex-center img{
+    max-width: 100%;
+    height: auto;
+}
+
 
 figcaption {
     margin-top: 20px;
