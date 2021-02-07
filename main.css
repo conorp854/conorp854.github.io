@@ -25,6 +25,7 @@ body {
     .katex-display {
         overflow-x: auto;
         overflow-y: hidden;
+        padding: 5px 0px 5px 0px;
     }
     .leftpane {
         display: none;
