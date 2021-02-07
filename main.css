@@ -16,9 +16,68 @@ body {
     line-height: 1.4;
 }
 
-.container {
-    width: 100%;
-    height: 100%;
+@media (max-width:1024px){
+    .container {
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+    }
+    .katex-display {
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    .leftpane {
+        display: none;
+    }
+    
+    .rightpane {
+        display: none;
+    }
+    .content {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+    }
+    
+    .subContent {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+    }
+}
+@media (min-width:1025px){
+    .container {
+        width: 100%;
+        height: 100%;
+    }
+    .leftpane {
+        width: 25%;
+        height:100%;
+        float: left;
+        background-color: rgb(255, 255, 255);
+        border-collapse: collapse;
+        visibility: hidden;
+    }
+    
+    .rightpane {
+        width: 25%;
+        height: 100%;
+        float: right;
+        background-color: rgb(255, 255, 255);
+        border-collapse: collapse;
+        visibility: hidden;
+    }
+    .content {
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+    
+    .subContent {
+        width: 100%;
+        height: 100%;
+        float: left;
+    }
 }
 
 .toppane {
@@ -31,36 +90,6 @@ body {
     text-align: center;
     text-transform: uppercase;
     visibility: hidden;
-}
-
-.leftpane {
-    width: 25%;
-    height:100%;
-    float: left;
-    background-color: rgb(255, 255, 255);
-    border-collapse: collapse;
-    visibility: hidden;
-}
-
-.rightpane {
-    width: 25%;
-    height: 100%;
-    float: right;
-    background-color: rgb(255, 255, 255);
-    border-collapse: collapse;
-    visibility: hidden;
-}
-
-.content {
-    width: 50%;
-    height: 100%;
-    float: left;
-}
-
-.subContent {
-    width: 100%;
-    height: 100%;
-    float: left;
 }
 
 img.diagram {
