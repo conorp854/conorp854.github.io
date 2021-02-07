@@ -18,7 +18,7 @@ async function loadtext(url,script_init) {
         console.log("running script")
         script_init()
     }
-    renderMathInElement(document.body);//Load math on page now after loading page
+    //renderMathInElement(document.body);
 }
 
 function loadPage(hash,script_init) {
@@ -36,3 +36,4 @@ window.onhashchange = function() { //Must assign a function to onhashchange
     loadPage(hash,script_init);
 }
 window.onhashchange();
+renderMathInElement(document.body);//Load math on page
