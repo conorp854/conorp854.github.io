@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Projects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+
+
+<body>
+
+    <div class="subContent">
+            <h1>Quantum Gate Model and the Controlled-NOT</h1>
+
+            <h2>What is the Controlled-NOT Gate?</h2>
+            <p>
+            The Controlled-NOT gate operates over two qubits, where one is designated the <b>control</b> and the other the <b>target</b>.
+            If we consider the computational basis state to begin with, when the control qubit is in the state \(\ket{1}\), the 
+            target qubit will be flipped. Otherwise, the target qubit will remain unchanged. So in the 2 qubit case we can summarise the rule as follows:
+
+            \[\ket{T}\ket{C} \xrightarrow{CNOT} \ket{T \otimes C}\ket{C}\]
+
+            This can be written out explicity in the case of 2 qubits:
+            \[\ket{00} \xrightarrow{CNOT} \ket{00}\]
+            \[\ket{01} \xrightarrow{CNOT} \ket{11}\]
+            \[\ket{10} \xrightarrow{CNOT} \ket{10}\]
+            \[\ket{11} \xrightarrow{CNOT} \ket{01}\]
+
+            This is how the CNOT operation is denoted in the Quantum Gate Model:
+            </p>
+
+            <div class="flex-center">
+                <figure>
+                    <img  src="/Sources/CNOT/cnot_symbol.png" width="250" height="250">
+                </figure>
+            </div>
+
+            <h2>How do I write this gate as a matrix?</h2>
+            <p>
+            We can work out the matrix representation of the CNOT gate for 2 qubits by knowing what the output should be. 
+            First, recall how the computational basis states are written as vectors:
+
+            \[\ket{0} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}\] 
+            \[\ket{1} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}\]
+
+            So if we have 2 qubits we need to consider all 4 possible states and collect their amplitudes in a vector. 
+            This is formally thought of as taking the kronecker product of the 2 qubits, however the kronecker operator
+            is often dropped. The full 2 qubit state is then written like so:
+
+            \[\ket{0} \otimes \ket{0} = \ket{00} = \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}\]
+            \[\ket{0} \otimes \ket{1} = \ket{01} = \begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix}\]
+            \[\ket{1} \otimes \ket{0} = \ket{10} = \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix}\]
+            \[\ket{1} \otimes \ket{1} = \ket{11} = \begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \end{bmatrix}\]
+
+            I'm showing the quantum state using the top qubit in the circuit as the rightmost qubit in the ket. Let's work 
+            through each of the states and construct the CNOT matrix as we go. It's worth mentioning that this takes the form 
+            of a permutation matrix.
+            
+            \[\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & & & \\ 0 & & & \\ 0 & & & \end{bmatrix}\begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}\]
+            \[\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & & \\ 0 & 0 & & \\ 0 & 1 & 0 & 0 \end{bmatrix}\begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \end{bmatrix}\]
+            \[\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & \\ 0 & 0 & 1 & 0\\ 0 & 1 & 0 & 0 \end{bmatrix}\begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix}\]
+            \[\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0\\ 0 & 1 & 0 & 0 \end{bmatrix}\begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \end{bmatrix} = \begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix}\]
+            
+
+            You may see the CNOT 2 qubit matrix take on a different form in other sources. This is due to the order in which
+            you consider the target and control qubits, essentially a question of endianess. Here we've adopted the 
+            standard that the top qubit in the circuit diagram is the rightmost qubit in the ket.
+            </p>
+
+            <h2>What if I have more than 2 qubits?</h2>
+            <p>
+            What happens now if we have more than 2 qubits and want to write out the effect of a CNOT gate across two of the qubits?
+            For example, let's consider the 3 qubit case. There are multiple ways of arranging a CNOT gate, let's just consider the following
+            as an example:
+
+            <div class="flex-center">
+                <figure>
+                    <img  src="/Sources/CNOT/3qubits_cnot.png" width="250" height="250">
+                </figure>
+            </div>
+            </p>
+            <p>
+            Now \(\ket{a}\) is our control qubit, \(\ket{b}\) is unaffected, and \(\ket{c}\) is our target qubit. So we know our input state
+            should transform as follows:
+
+            \[\ket{000} \xrightarrow{CNOT} \ket{000}\]
+            \[\ket{001} \xrightarrow{CNOT} \ket{101}\]
+            \[\ket{010} \xrightarrow{CNOT} \ket{010}\]
+            \[\ket{011} \xrightarrow{CNOT} \ket{111}\]
+            \[\ket{100} \xrightarrow{CNOT} \ket{100}\]
+            \[\ket{101} \xrightarrow{CNOT} \ket{001}\]
+            \[\ket{110} \xrightarrow{CNOT} \ket{110}\]
+            \[\ket{111} \xrightarrow{CNOT} \ket{011}\]
+
+            We could now follow the same procedure as last time to show how the full matrix representation could be written down. However,
+            this quickly becomes tedious. We may also likely need to create a matrix representation of a CNOT gate across a much larger 
+            quantum circuit so we'll need a better method. 
+            </p>
+
+            <h2>What is the general solution?</h2>
+            <p>
+            If we have many more qubits and need to write down a matrix representation of our CNOT gate the earlier method will quickly
+            become intractable. In fact, we can write down a very succint representation of the CNOT gate for any amount of qubits. Here it is:
+
+            \[
+            \text{CNOT}_{\text{TC}} = \overbrace{\text{i}_\text{d}}^{\text{Target}} \otimes \text{i}_\text{d} ... \otimes \overbrace{\ket{0}\bra{0}}^{\text{Control}}
+                                    + \overbrace{\sigma_{x}}^{\text{Target}} \otimes \text{i}_\text{d} ... \otimes \overbrace{\ket{1}\bra{1}}^{\text{Control}}
+            \]
+
+            Just to clarify, \(\otimes\) in this context is the kronecker product, \(\text{i}_\text{d}\) is the 2x2 identity matrix, and 
+            \(\sigma_{x}\) is the Pauli-X or NOT gate. We also see two other matrices, the zero projector \(\ket{0}\bra{0}\) and the one 
+            projector \(\ket{1}\bra{1}\). We must move the location of the four matrices noted in the above expression to align with our
+            quantum circuit. Consider the 2 qubit case first:
+
+            <div class="flex-center">
+                <figure>
+                    <img  src="/Sources/CNOT/equiv_2qubit.png" width="500" height="500">
+                </figure>
+            </div>
+            </p>
+
+            <p>
+            So in this case we would write the CNOT expression as:
+
+            \[\text{CNOT}_{21} = \overbrace{\text{i}_{\text{d}}}^{\text{Target}} \otimes \overbrace{\ket{0}\bra{0}}^{\text{Control}} + \overbrace{\sigma_{x}}^{\text{Target}} \otimes \overbrace{\ket{1}\bra{1}}^{\text{Control}}\]
+
+            The zero projector will resolve to 1 if the control is \(\ket{0}\) and the one projector will resolve to 0. If the control is \(\ket{1}\) then the one projector will
+            resolve to 1 and the zero projector will resolve to 0. So in affect, we are choosing one of the two terms depending on the value of the control qubit.
+            
+            <!-- Explicitly multiply this out with input states -->
+
+            Let's see another example, this time with 3 qubits:
+
+            <div class="flex-center">
+                <figure>
+                    <img  src="/Sources/CNOT/equiv_3qubits.png" width="500" height="500">
+                </figure>
+            </div>
+            </p>
+
+            <h2>Can I make a program to generate this matrix for me?</h2>
+            <p>
+            Absolutely, here is an implementation in Python that will return the full CNOT matrix given the number of qubits, the target qubit index, 
+            and the control qubit index. This could probably be made more efficient but it works for now! Of course, if you try to generate the CNOT matrix
+            for a large number of qubits you will quickly run out of memory.
+            </p>
+
+            <p id="cnot-gist">
+                <iframe 
+                width="100%"
+                height=1000
+                frameBorder="0"
+                src="data:text/html;charset=utf-8,
+                <head><base target='_blank' /></head>
+                <body><script src='https://gist.github.com/conorp854/1c58e183d153804deaf75f214873049b.js'></script>
+                </body>">
+                </iframe>
+            </p>
+
+            <h3>Revision History</h3>
+            <ul>
+                <li>[07/02/21] Released first draft. Probably a lot wrong and horribly unclear. Sorry.</li>
+            </ul>
+
+    </div>
+
+</body>
+
+</html>
