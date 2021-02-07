@@ -117,4 +117,8 @@ figcaption {
         height: 100%;
         margin: 0 auto;
     }
+    p,ul {
+        margin-left: 25px;
+        margin-right: 25px;
+   }   
 }
