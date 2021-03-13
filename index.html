@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="main.css" />
     <script src=js/cnot.js defer></script>
     <script src="js/contentLoad.js" defer></script>
+    <script src="js/topGraphDraw.js" defer></script>
 
     <!-- KATEX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
@@ -31,16 +32,16 @@
 
         <div class="toppane"></div>
 
-        <div class="leftpane">
+        <div class="leftpane" id="leftpane">
             Left Pane
         </div>
 
         <div class="content">
-            <div class="flex-center"><img src="Sources/desmos-graph.png" alt=""/></div>
+            <div class="flex-center"><canvas id="topGraph" width="100%"></canvas></div>
             <div class="subContent" id="content-index"></div>
         </div>
 
-        <div class="rightpane">
+        <div class="rightpane" id="rightpane">
             Right Pane
         </div>
 
