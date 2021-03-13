@@ -1,4 +1,4 @@
-function plotSinc(ctx, xOffset, step, scale) {
+function plotSinc(ctx, xOffset, step, amp, scale) {
     var width = ctx.canvas.width;
     var height = ctx.canvas.height;
 
@@ -10,7 +10,7 @@ function plotSinc(ctx, xOffset, step, scale) {
     var y = 0;
     var freq_sinc = 0.08;
     var freq_amp  = 0.03;
-    var amplitude = 50*Math.sin(freq_amp*step);
+    var amplitude = amp*Math.sin(freq_amp*step);
     while (x < width) {
         y = height/2 + amplitude*Math.sin(freq_sinc*(x - (width/2 + xOffset)))/(freq_sinc*(x - (width/2 + xOffset)));
         ctx.lineTo(x, y);
@@ -40,6 +40,7 @@ function draw() {
         var rect = e.target.getBoundingClientRect();
         var x = (e.clientX - rect.left - canvas.width/4)*scale; //x position within the element relative to centre.
         mousePosition.x = x;
+        amp = 50;
     }
 
     //Default State with just axes to restore to
@@ -47,10 +48,15 @@ function draw() {
     context.save();            
     
     //Restore to empty axes after current sine iteration
-    plotSinc(context, mousePosition.x, step, scale);
+    plotSinc(context, mousePosition.x, step, amp, scale);
     context.restore();
     
+    //TODO: make this logic less horrible...
     step += 1;
+    amp-=0.05;
+    if(amp<0){
+        amp=0;
+    }
     window.requestAnimationFrame(draw);
 }
 
@@ -62,4 +68,5 @@ function initDraw() {
 }
 var mousePosition = {x: 0, y:0};
 var step = 0;
+var amp = 50;
 initDraw();
