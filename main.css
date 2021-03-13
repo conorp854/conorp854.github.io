@@ -2,10 +2,15 @@
 
 a:link {
     text-decoration: none;
+    color: rgb(0,0,0);
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+a:visited {
+    color: rgb(124,0,31)
 }
 
 html {font-size: 1em;  /* 16px */}
@@ -70,6 +75,17 @@ p,ul {
      margin-right: 50px;
 }
 
+ul.nav-bar {
+    margin-left:0;
+    padding-left:0;
+    list-style: none;
+}
+
+li.nav-bar{
+    display:inline;
+    margin-left:-5px;
+    padding:5px
+}
 /*Images*/
 
 .flex-center {
