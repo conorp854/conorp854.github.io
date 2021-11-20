@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Projects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+
+
+<body>
+
+    <div class="subContent">
+            <h1>Quantum Gate Model and the Discrete Quantum Fourier Transform</h1>
+
+            <p><b>[20/11/21]</b></p>
+
+            <h2>What is the total unitary matrix describing a quantum circuit?</h2>
+            <p>
+                Explanation coming soon!
+
+                <div class="flex-center">
+                    <figure>
+                        <img  src="/Sources/QFT/QuantumGateDiagrams.3Qubit.png" width="500" height="500">
+                    </figure>
+                </div>
+
+                <div class="flex-center">
+                    <figure>
+                        <img  src="/Sources/QFT/QuantumGateDiagrams.3Qubit_Kron.png" width="500" height="500">
+                    </figure>
+                </div>
+
+                <div class="flex-center">
+                    <figure>
+                        <img  src="/Sources/QFT/QuantumGateDiagrams.3QubitMult.png" width="500" height="500">
+                    </figure>
+                </div>
+            </p>
+
+            <h2>How can we build a circuit representation of the <span class="tooltip">QFT<span class="tooltiptext">Quantum Fourier Transform</span></span>?</h2>
+            <p>
+                Represenation of input state vector in <span class="tooltip">BCD<span class="tooltiptext">Binary Coded Decimal</span></span>
+                format:
+
+                \[
+                    |x\rangle = |x_{1}x_{2}x_{3}\rangle \therefore x = \sum_{l=1}^{n}x_{l}2^{n-l}
+                \]
+                
+            </p>
+
+            <p>
+                The discrete quantum fourier transform is defined as follows:
+                
+                \[
+                    |\tilde{x}\rangle = QFT|x\rangle = \frac{1}{\sqrt{N}}\sum_{y=0}^{N-1}e^{\frac{2\pi{i}xy}{N}}|y\rangle
+                \]
+
+            </p>
+
+            <p>
+                <span class="tooltip">BCD<span class="tooltiptext">Binary Coded Decimal</span></span> expansion of the quantum fourier transform.
+
+                \[ 
+                    \begin{aligned}
+                    |\tilde{x}\rangle = QFT|x\rangle &= \frac{1}{\sqrt{N}}\sum_{y=0}^{N-1} e^{\frac{2\pi{i}xy}{N}}|y\rangle \\
+                    &= \frac{1}{\sqrt{N}}\sum_{y=0}^{N-1} e^{\frac{2\pi{i}x{\sum_{k=1}^{n}{\frac{y_{k}2^n}{2^k}}}}{N}}|y\rangle \\
+                    &= \frac{1}{\sqrt{N}}\sum_{y=0}^{N-1} e^{2\pi{i}x{\sum_{k=1}^{n}\frac{y_k}{2^k}}}|y\rangle \\
+                    &= \frac{1}{\sqrt{N}}\sum_{y=0}^{N-1} \prod_{k=1}^{n}e^{2\pi{i}x{\frac{y_k}{2^k}}}|y\rangle \\
+                    &= \frac{1}{\sqrt{N}}\sum_{y_{1}=0}^{1}\sum_{y_{2}=0}^{1}\sum_{y_{3}=0}^{1}\ldots\sum_{y_{n}=0}^{1}
+                    \prod_{k=1}^{n}e^{2\pi{i}x{\frac{y_k}{2^k}}}|y_{1}y_{2}y_{3}\ldots y_{n}\rangle
+                    \end{aligned} 
+                \]
+
+            </p>
+
+            <p>
+                We can represent a number in base 2 expansion with a sum of powers:
+
+                \[
+                    \begin{aligned}
+                    \text{e.g: }y = 5_{10} &= 101_{2} \\
+                    &= (1)2^{2} + (0)2^{1} + (1)2^{0} \\
+                    &= \sum_{k = 1}^{3} \frac{y_{k}2^3}{2^k}
+                    \end{aligned}
+                \]
+
+            </p>
+
+            <p>
+                Continuing with the expansion we now consider the number y as a tensor product of its BCD representation.
+
+                \[
+                    \begin{aligned}
+                    |\tilde{x}\rangle = QFT|x\rangle &= \frac{1}{\sqrt{N}}\sum_{y_{1}=0}^{1}\sum_{y_{2}=0}^{1}\sum_{y_{3}=0}^{1}\ldots\sum_{y_{n}=0}^{1}
+                    \prod_{k=1}^{n}e^{2\pi{i}x{\frac{y_k}{2^k}}}|y_{1}y_{2}y_{3}\ldots y_{n}\rangle \\
+                    &= \frac{1}{\sqrt{N}}\bigotimes_{k=1}^{n}(|0\rangle + e^{\frac{2\pi{i}x}{2^k}}|1\rangle) \\
+                    &= \frac{1}{\sqrt{N}}\bigotimes_{k=1}^{n}(|0\rangle + e^{2\pi{i}[0.x_{k}\ldots{x_{n}}]}|1\rangle)
+                    \end{aligned}
+                \]
+            </p>
+
+            <p>
+                The final step in the above expansion is perhaps subtle and worth exploring in more detail.
+                Only the fractional part of \(\frac{x}{2^k}\) will affect the phase of the complex exponential. All powers of 2
+                greater than or equal to 0 contribute natural multiples of \(2\pi\) which result in 1.
+
+                \[
+                    e^{\frac{2\pi{i}x}{2^k}} = e^{2\pi{i}\sum_{l=1}^{n}x_{l}2^{n-l-k}} = e^{2\pi{i}[0.x_{k}\ldots{x_{n}}]}
+                \]
+
+
+            </p>
+
+            <h2>How can I write down a matrix representation of this operation?</h2>
+            <p>
+                Coming soon!
+            </p>
+
+            <h2>Can I make a program to generate this matrix for me?</h2>
+            <p>
+                Coming soon!
+            </p>
+
+            <!--
+            <div id="cnot-gist">
+                <iframe 
+                width="100%"
+                height=1000
+                frameBorder="0"
+                src="data:text/html;charset=utf-8,
+                <head><base target='_blank' /></head>
+                <body><script src='https://gist.github.com/conorp854/1c58e183d153804deaf75f214873049b.js'></script>
+                </body>">
+                </iframe>
+            </div>
+            -->
+
+            <h3>Revision History</h3>
+            <ul>
+                <li>[20/11/21] Draft 0.1 Added equations and tooltips. Further explanation and diagrams to be embedded next. Programmatic and matrix implementations coming soon.</li>
+            </ul>
+
+            <h3>Sources</h3>
+            <ul>
+                <li><a href="http://theory.caltech.edu/~preskill/ph219/chap6_20_6A.pdf" target="_blank">John Preskill's notes on Quantum Algorithms</a></li>
+                <li><a href="https://books.google.ie/books/about/Quantum_Computation_and_Quantum_Informat.html?id=-s4DEy7o-a0C" target="_blank">Quantum Computation and Quantum Information; Michael Nielsen and Isaac Chuang</a></li>
+            </ul>
+
+    </div>
+
+</body>
+
+</html>
