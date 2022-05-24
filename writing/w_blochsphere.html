@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Visualising Mixed States on the Bloch Sphere</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="/main.css" />
+
+<!-- KATEX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+
+    <div class="subContent">
+        <h1>Visualising Mixed States on the Bloch Sphere [WIP]</h1>
+        
+        <p>
+            Mixed states in quantum mechanics are convex combinations of pure states. Pure states blue and red have a magnitude of 1 on the Bloch sphere below. 
+            The resulting green mixed state can be represented by a vector with magnitude less than 1 on the Bloch sphere!
+        </p>
+
+        <div class="flex-center">
+            <figure>
+                <img  src="/Sources/BlochSphere/MixedState_BlochSphere.png" width="100%">
+                <figcaption>Convex combination of two pure states</figcaption>
+            </figure>
+        </div>
+
+        <p>
+            A mixed state of 3 pure states on the Bloch Sphere exists somewhere on the 2D convex hull defined by the 3 pure state vertices. 
+            Is the convex hull of N pure states in general N-1 dimensional? The convex hull of a finite set of points like this is called a convex polytope.
+
+        <div class="flex-center">
+            <figure>
+                <img  src="/Sources/BlochSphere/MixedState_BlochSphere_3States.png" width="100%">
+                <figcaption>Convex combination of 3 pure states</figcaption>
+            </figure>
+        </div>
+        </p>
+
+        <p>
+            We can very quickly think of some strange states using this visualisation. 
+            The mixed state of the red and blue vectors below with equal weights q is in fact the zero vector! This is true of any two anti-parallel vectors on the Bloch Sphere.
+
+        <div class="flex-center">
+            <figure>
+                <img  src="/Sources/BlochSphere/MixedState_BlochSphere_ZeroVector.png" width="100%">
+                <figcaption>Zero vector combination</figcaption>
+            </figure>
+        </div>
+        </p>
+
+
+       
+    </div>
+	
+</body>
+
+</html>
