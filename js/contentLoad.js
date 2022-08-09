@@ -13,7 +13,17 @@ async function fetchAsText(url) {
 
 async function loadtext(url,script_init) {
     const contentDiv = document.getElementById("content-index");
-    contentDiv.innerHTML = await fetchAsText(url);
+    const containerDiv = document.getElementById("container");
+    if (url == "projects/projects_notionclock.html"){
+        containerDiv.innerHTML = await fetchAsText(url);
+        var script = document.createElement('script');
+        script.setAttribute('src', 'js/showTime.js');
+        script.setAttribute('type', 'text/javascript');
+        document.body.appendChild(script);
+    }
+    else{
+        contentDiv.innerHTML = await fetchAsText(url);
+    }
     if(script_init){
         console.log("running script")
         script_init()

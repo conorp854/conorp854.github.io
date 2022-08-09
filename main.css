@@ -175,3 +175,18 @@ figcaption {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+.clock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: white;
+    font-size: 60px;
+    font-family: Orbitron;
+    letter-spacing: 7px;
+    text-align: center;
+    background: black;
+    border-radius: 25px;
+    white-space: pre-line;
+}
